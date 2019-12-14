@@ -1,5 +1,5 @@
 # run with Java APM Agent without trace_methods
-java -javaagent:./elastic-apm-agent-1.7.0.jar `
+java -javaagent:./elastic-apm-agent-1.12.0.jar `
 "-Delastic.apm.server_urls=http://localhost:8200" `
 "-Delastic.apm.secret_token=apm_secret_token" `
 "-Delastic.apm.service_name=spring-petclinic-monolith" `

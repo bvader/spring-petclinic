@@ -1,6 +1,7 @@
 # run with Java APM Agent
-java -javaagent:./elastic-apm-agent-1.7.0.jar \
--Delastic.apm.server_urls=http://localhost:8200 \
+java -javaagent:./elastic-apm-agent-1.12.0.jar \
+-Delastic.apm.server_urls=https://localhost:8200 \
+-Delastic.apm.verify_server_cert=false \
 -Delastic.apm.secret_token=secret_token \
 -Delastic.apm.service_name=spring-petclinic-monolith \
 -Delastic.apm.application_packages=org.springframework.samples \

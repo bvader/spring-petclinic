@@ -1,0 +1,45 @@
+---
+  apiVersion: v1
+  kind: Namespace
+  metadata:
+    name: petclinic
+---
+  apiVersion: apps/v1beta1
+  kind: Deployment
+  metadata:
+    name: petclinic-demo-deployment
+  spec:
+    replicas: 1
+    template:
+      metadata:
+        labels:
+          app: petclinic-demo  
+      spec:
+        containers: 
+        - name: petclinic-demo 
+          image: bvader/petclinic
+          imagePullPolicy: Always
+          ports:
+          - containerPort: 8080
+          env:
+          - name: ELASTIC_APM_SECRET_TOKEN
+            # Put the decoded token here in single quotes
+            value: 'secrettoken'
+
+          - name: ELASTIC_APM_SERVER_URLS
+            # Put the URL for the APM service here.
+            value: "https://apmserver-apm-http.default.svc.cluster.local:8200"
+
+          - name: ELASTIC_APM_SERVICE_NAME
+            # Name that will appear in the APM UI
+            value: "petclinic"
+
+          - name: ELASTIC_APM_TRACE_METHODS
+            # Turn On Trace Methods
+            value: "org.springframework.samples.petclinic.*"
+
+          - name: ELASTIC_APM_VERIFY_SERVER_CERT
+            # Turn Off Certificate Validation
+            value: "false"
+
+
