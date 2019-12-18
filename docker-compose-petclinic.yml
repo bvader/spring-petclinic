@@ -1,0 +1,12 @@
+petclinic:
+  image: bvader/petclinic:latest
+  environment:
+#    - ELASTIC_APM_SERVER_URLS=https://apmserver-apm-http.default.svc.cluster.local:8200 
+    - ELASTIC_APM_SERVER_URLS=https://host.docker.internal:8200 
+    - ELASTIC_APM_VERIFY_SERVER_CERT=false 
+    - ELASTIC_APM_SECRET_TOKEN=w8hgsgcbvmzm49mrcm6tm4m8 
+    - ELASTIC_APM_SERVICE_NAME=spring-petclinic-monolith 
+    - ELASTIC_APM_APPLICATION_PACKAGES=org.springframework.samples
+  ports:
+    - "8080:8080"
+
